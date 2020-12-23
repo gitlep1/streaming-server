@@ -29,7 +29,7 @@ const router = express.Router()
 
 // INDEX
 // GET /playlists
-router.get('/playlist', requireToken, (req, res, next) => {
+router.get('/playlists', requireToken, (req, res, next) => {
   Playlist.find()
     .then(playlists => {
       // `playlists` will be an array of Mongoose documents
@@ -45,7 +45,7 @@ router.get('/playlist', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /playlists/5a7db6c74d55bc51bdf39793
-router.get('/playlist/:id', requireToken, (req, res, next) => {
+router.get('/playlists/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Playlist.findById(req.params.id)
     .then(handle404)
@@ -57,7 +57,7 @@ router.get('/playlist/:id', requireToken, (req, res, next) => {
 
 // CREATE
 // POST /playlists
-router.post('/playlist', requireToken, (req, res, next) => {
+router.post('/playlists', requireToken, (req, res, next) => {
   // set owner of new playlist to be current user
   req.body.playlist.owner = req.user.id
 
@@ -74,7 +74,7 @@ router.post('/playlist', requireToken, (req, res, next) => {
 
 // UPDATE
 // PATCH /playlists/5a7db6c74d55bc51bdf39793
-router.patch('/playlist/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/playlists/:id', requireToken, removeBlanks, (req, res, next) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
   delete req.body.playlist.owner
@@ -97,7 +97,7 @@ router.patch('/playlist/:id', requireToken, removeBlanks, (req, res, next) => {
 
 // DESTROY
 // DELETE /playlists/5a7db6c74d55bc51bdf39793
-router.delete('/playlist/:id', requireToken, (req, res, next) => {
+router.delete('/playlists/:id', requireToken, (req, res, next) => {
   Playlist.findById(req.params.id)
     .then(handle404)
     .then(playlist => {
