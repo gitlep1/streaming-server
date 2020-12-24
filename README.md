@@ -3,7 +3,7 @@ This is my server to my streaming app. It handles all the routing stuff. My stre
 PLANNING STRATEGY:<br>
 To plan for this the first thing I did was come up with an ERD.<br>
 
-<img src="./README images/ERD.png"></img><br>
+<img src="https://raw.githubusercontent.com/gitlep1/streaming-server/main/README%20Images/ERD.png"></img><br>
 
 after that I got to work on creating the playlist schema and the playlist routes. After that was done I started working on the front-end.<br>
 
